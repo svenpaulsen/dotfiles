@@ -1,0 +1,11 @@
+{
+  "tab_size":                     2,
+  "highlight_modified_tabs":      true,
+  "translate_tabs_to_spaces":     true,
+  "draw_minimap_border":          true,
+  "always_show_minimap_viewport": true,
+  "open_files_in_new_window":     false,
+  "close_windows_when_empty":     false,
+  "spell_check":                  false,
+  "margin":                       2
+}
