@@ -1,0 +1,53 @@
+[server]
+
+[mysqld]
+
+user            = mysql
+pid-file        = /var/run/mysqld/mysqld.pid
+socket          = /var/run/mysqld/mysqld.sock
+basedir         = /usr
+datadir         = /var/lib/mysql
+tmpdir          = /tmp
+log_error       = /var/log/mysql/error.log
+lc-messages-dir = /usr/share/mysql
+
+performance_schema     = 0
+max_connections        = 2048
+table_open_cache       = 1024
+table_definition_cache = 512
+thread_cache_size      = 32
+
+key_buffer_size    = 32M
+max_allowed_packet = 256M
+myisam-recover     = BACKUP
+
+thread_stack = 256K
+
+max_binlog_size  = 128M
+expire_logs_days = 10
+
+query_cache_type  = 1
+query_cache_size  = 256M
+query_cache_limit = 2M
+
+innodb_buffer_pool_size        = 4096M
+innodb_log_file_size           = 2G
+innodb_log_buffer_size         = 4M
+innodb_flush_log_at_trx_commit = 2
+innodb_thread_concurrency      = 8
+innodb_file_per_table          = 1
+innodb_flush_method            = O_DIRECT
+
+character-set-server = utf8mb4
+collation-server     = utf8mb4_general_ci
+
+sql_mode = NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES
+
+skip-character-set-client-handshake
+skip-external-locking
+
+[embedded]
+
+[mariadb]
+
+[mariadb-10.0]
