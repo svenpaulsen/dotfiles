@@ -1,0 +1,38 @@
+# networking
+Port                            22
+AddressFamily                   any
+
+# key files
+HostKey                         /etc/ssh/ssh_host_rsa_key
+HostKey                         /etc/ssh/ssh_host_dsa_key
+HostKey                         /etc/ssh/ssh_host_ecdsa_key
+HostKey                         /etc/ssh/ssh_host_ed25519_key
+AuthorizedKeysFile              %h/.ssh/authorized_keys
+
+# security
+UsePrivilegeSeparation          yes
+KeyRegenerationInterval         3600
+ServerKeyBits                   1024
+
+# logging
+SyslogFacility                  AUTH
+LogLevel                        INFO
+
+# authentication:
+LoginGraceTime                  120
+PermitRootLogin                 yes
+StrictModes                     yes
+PubkeyAuthentication            yes
+ChallengeResponseAuthentication no
+PasswordAuthentication          no
+UsePAM                          no
+UseDNS                          no
+
+# misc
+PrintMotd                       no
+PrintLastLog                    yes
+TCPKeepAlive                    yes
+AcceptEnv                       LANG LC_*
+
+# sftp
+Subsystem sftp /usr/lib/openssh/sftp-server
