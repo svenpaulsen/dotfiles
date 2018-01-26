@@ -1,0 +1,74 @@
+# Virtual Host example.com
+#
+# Enforce HTTPS for multiple subdomains 
+
+server {
+  listen                   80;
+  listen                   [::]:80;
+  
+  server_name              example.com ~^(subdomain1|subdomain2|subdomain3)\.example\.com$;
+  rewrite                  ^ https://$http_host$request_uri? permanent;
+}
+
+# Virtual Host example.com (SSL)
+#
+# WordPress with PHP behind Cloudflare
+
+server {
+  listen                   443;
+  listen                   [::]:443;
+  
+  server_name              example.com www.example.com;
+  server_name_in_redirect  off;
+
+  root                     /var/www/vhosts/example.com/htdocs;
+  index                    index.html index.htm index.php;
+
+  include                  sites-settings/forcewww.conf;
+  include                  sites-settings/cloudflare.conf;
+  include                  sites-settings/common.conf;
+  include                  sites-settings/wordpress.conf;
+  include                  sites-settings/php.conf;
+
+  include                  sites-settings/ssl.conf;
+
+  ssl_certificate          /etc/nginx/ssl/_self-signed/crt.pem;
+  ssl_certificate_key      /etc/nginx/ssl/_self-signed/key.pem;
+}
+
+# Virtual Host proxy.example.com (SSL)
+#
+# Reverse Proxy with multiple backend servers
+
+upstream backend {
+    server                 backend1.example.com;
+    server                 backend2.example.com;
+
+    server                 backup1.example.com:8080 backup;
+    server                 backup2.example.com:8080 backup;
+}
+
+server {
+  listen                   443;
+  listen                   [::]:443;
+  
+  server_name              proxy.example.com;
+  server_name_in_redirect  off;
+  merge_slashes            off;
+
+  include                  sites-settings/ssl.conf;
+
+  ssl_certificate          /etc/nginx/ssl/_self-signed/crt.pem;
+  ssl_certificate_key      /etc/nginx/ssl/_self-signed/key.pem;
+
+  location / {
+    rewrite                (.*)//+(.*) $1/$2 permanent;
+
+    proxy_set_header       X-Forwarded-Host $host;
+    proxy_set_header       X-Forwarded-Server $host;
+    proxy_set_header       X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header       X-Real-IP $remote_addr;
+    proxy_pass             http://backend;
+    proxy_redirect         off;
+  }
+}
