@@ -1,5 +1,6 @@
 --
 -- DEFAULT PERMISSIONS AND VIRTUAL SERVER SETTINGS
+-- TS3WebAdmin Export
 --
 -- Host Identifier: teamspeak01
 -- Creation Time:   Mon, 05 Feb 2018 20:01:41 +0100
@@ -35,9 +36,9 @@ INSERT INTO server_properties (server_id, id, ident, value) VALUES
  (0, 0, "virtualserver_hostbanner_gfx_url", ""),
  (0, 0, "virtualserver_hostbanner_gfx_interval", "0"),
  (0, 0, "virtualserver_hostbanner_mode", "0"),
- (0, 0, "virtualserver_hostbutton_url", "https://www.planetteamspeak.com"),
- (0, 0, "virtualserver_hostbutton_gfx_url", "https://cdn.planetteamspeak.com/images/logos/logo_small.png"),
- (0, 0, "virtualserver_hostbutton_tooltip", "Planet TeamSpeak"),
+ (0, 0, "virtualserver_hostbutton_url", ""),
+ (0, 0, "virtualserver_hostbutton_gfx_url", ""),
+ (0, 0, "virtualserver_hostbutton_tooltip", ""),
  (0, 0, "virtualserver_complain_autoban_count", "5"),
  (0, 0, "virtualserver_complain_autoban_time", "1200"),
  (0, 0, "virtualserver_complain_remove_time", "3600"),
