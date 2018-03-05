@@ -2,8 +2,8 @@
 # DEFAULT PERMISSIONS
 #
 # Host Identifier: teamspeak01
-# Creation Time:   Wed, 07 Feb 2018 23:36:36 +0100
-# Server Version:  3.1.0 [Build: 1517804176]
+# Creation Time:   Mon, 05 Mar 2018 19:21:20 +0100
+# Server Version:  3.1.1 [Build: 1519305632]
 #
 --start
 admin_query
@@ -254,6 +254,37 @@ i_ft_directory_create_power=100,100
 i_ft_needed_directory_create_power=-2,100
 i_ft_quota_mb_download_per_client=-1,100
 i_ft_quota_mb_upload_per_client=-1,100
+b_virtualserver_modify_music_bot_limit=1,100
+i_server_group_modify_power=100,100
+i_server_group_needed_modify_power=100,100
+i_server_group_member_add_power=100,100
+i_server_group_needed_member_add_power=100,100
+i_server_group_member_remove_power=100,100
+i_server_group_needed_member_remove_power=100,100
+i_channel_group_modify_power=100,100
+i_channel_group_needed_modify_power=100,100
+i_channel_group_member_add_power=100,100
+i_channel_group_needed_member_add_power=100,100
+i_channel_group_member_remove_power=100,100
+i_channel_group_needed_member_remove_power=100,100
+b_client_music_create=1,100
+b_client_music_channel_list=1,100
+b_client_music_server_list=1,100
+i_client_music_limit=-1,100
+i_client_music_info=100,100
+i_client_music_needed_info=100,100
+i_client_music_delete_power=100,100
+i_client_music_needed_delete_power=100,100
+i_client_music_play_power=100,100
+i_client_music_needed_play_power=100,100
+i_client_music_rename_power=100,100
+i_client_music_needed_rename_power=100,100
+b_client_ban_list_global=1,100
+b_client_ban_create_global=1,100
+b_client_ban_edit_global=1,100
+b_client_ban_delete_global=1,100
+b_client_ban_delete_own_global=1,100
+b_client_ban_edit=1,100
 --end
 --start
 query_guest
@@ -498,6 +529,37 @@ i_ft_directory_create_power=75,75
 i_ft_needed_directory_create_power=-2,75
 i_ft_quota_mb_download_per_client=-1,75
 i_ft_quota_mb_upload_per_client=-1,75
+b_virtualserver_modify_music_bot_limit=1,75
+i_server_group_modify_power=75,75
+i_server_group_needed_modify_power=75,75
+i_server_group_member_add_power=75,75
+i_server_group_needed_member_add_power=75,75
+i_server_group_member_remove_power=75,75
+i_server_group_needed_member_remove_power=75,75
+i_channel_group_modify_power=75,75
+i_channel_group_needed_modify_power=75,75
+i_channel_group_member_add_power=75,75
+i_channel_group_needed_member_add_power=75,75
+i_channel_group_member_remove_power=75,75
+i_channel_group_needed_member_remove_power=75,75
+b_client_music_create=1,75
+b_client_music_channel_list=1,75
+b_client_music_server_list=1,75
+i_client_music_limit=-1,75
+i_client_music_info=75,75
+i_client_music_needed_info=75,75
+i_client_music_delete_power=75,75
+i_client_music_needed_delete_power=75,75
+i_client_music_play_power=75,75
+i_client_music_needed_play_power=75,75
+i_client_music_rename_power=75,75
+i_client_music_needed_rename_power=75,75
+b_client_ban_list_global=1,75
+b_client_ban_create_global=1,75
+b_client_ban_edit_global=1,75
+b_client_ban_delete_global=1,75
+b_client_ban_delete_own_global=1,75
+b_client_ban_edit=1,75
 --end
 --start
 server_normal

@@ -1,10 +1,9 @@
 --
 -- DEFAULT PERMISSIONS AND VIRTUAL SERVER SETTINGS
--- TS3WebAdmin Export
 --
 -- Host Identifier: teamspeak01
--- Creation Time:   Wed, 07 Feb 2018 13:31:22 +0100
--- Server Version:  3.1.0 [Build: 1517804176]
+-- Creation Time:   Mon, 05 Mar 2018 19:26:27 +0100
+-- Server Version:  3.1.1 [Build: 1519305632]
 --
 
 -- master instance properties
@@ -1183,3 +1182,4 @@ INSERT INTO perm_channel_groups (server_id, id1, id2, perm_id, perm_value, perm_
 INSERT INTO perm_channel_groups (server_id, id1, id2, perm_id, perm_value, perm_negated, perm_skip) VALUES
  (0, 4, 0, "i_group_auto_update_type", 10, 0, 0),
  (0, 4, 0, "i_group_needed_modify_power", 75, 0, 0);
+
