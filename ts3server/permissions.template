@@ -2,11 +2,13 @@
 # DEFAULT PERMISSIONS
 #
 # Host Identifier: teamspeak01
-# Creation Time:   Mon, 05 Mar 2018 19:21:20 +0100
+# Creation Time:   Sun, 08 Apr 2018 00:37:47 +0200
 # Server Version:  3.1.1 [Build: 1519305632]
 #
 --start
-admin_query
+name:ServerQuery Admins
+target:0
+property:serverinstance_admin_serverquery_group
 b_serverinstance_help_view=1,100
 b_serverinstance_version_view=1,100
 b_serverinstance_info_view=1,100
@@ -287,7 +289,9 @@ b_client_ban_delete_own_global=1,100
 b_client_ban_edit=1,100
 --end
 --start
-query_guest
+name:ServerQuery Guests
+target:0
+property:serverinstance_guest_serverquery_group
 b_serverinstance_help_view=1,
 b_serverinstance_version_view=1,
 b_serverinstance_permission_list=1,
@@ -320,7 +324,9 @@ i_client_poke_power=-1,
 i_client_whisper_power=-1,
 --end
 --start
-server_admin
+name:Server Admins
+target:1
+property:serverinstance_template_serveradmin_group
 b_virtualserver_info_view=1,75
 b_virtualserver_connectioninfo_view=1,75
 b_virtualserver_channel_list=1,75
@@ -562,7 +568,8 @@ b_client_ban_delete_own_global=1,75
 b_client_ban_edit=1,75
 --end
 --start
-server_normal
+name:Server Members
+target:1
 b_virtualserver_info_view=1,
 b_virtualserver_connectioninfo_view=1,
 b_virtualserver_channel_list=1,
@@ -643,7 +650,9 @@ i_ft_quota_mb_download_per_client=-1,
 i_ft_quota_mb_upload_per_client=-1,
 --end
 --start
-server_guest
+name:Server Guests
+target:1
+property:serverinstance_template_serverdefault_group
 b_virtualserver_info_view=1,
 b_virtualserver_connectioninfo_view=1,
 b_virtualserver_channel_list=1,
@@ -692,7 +701,9 @@ i_ft_quota_mb_download_per_client=-1,
 i_ft_quota_mb_upload_per_client=-1,
 --end
 --start
-channel_admin
+name:Channel Admins
+target:2
+property:serverinstance_template_channeladmin_group
 b_channel_modify_make_semi_permanent=1,
 b_channel_modify_make_temporary=1,
 b_channel_modify_name=1,
@@ -728,7 +739,8 @@ i_client_talk_power=60,
 b_client_set_flag_talker=1,
 --end
 --start
-channel_operator
+name:Channel Operators
+target:2
 i_icon_id=200,
 b_group_is_permanent=1,
 i_group_auto_update_type=35,
@@ -742,7 +754,8 @@ i_client_talk_power=50,
 b_client_set_flag_talker=1,
 --end
 --start
-channel_guest
+name:Channel Guests
+target:2
 i_group_auto_update_type=10,
 i_group_needed_modify_power=75,
 --end
