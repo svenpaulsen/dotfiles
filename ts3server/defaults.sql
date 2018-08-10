@@ -2,8 +2,8 @@
 -- DEFAULT PERMISSIONS AND VIRTUAL SERVER SETTINGS
 --
 -- Host Identifier: teamspeak01
--- Creation Time:   Mon, 05 Mar 2018 19:26:27 +0100
--- Server Version:  3.1.1 [Build: 1519305632]
+-- Creation Time:   Fri, 10 Aug 2018 13:04:45 +0200
+-- Server Version:  3.3.0 [Build: 1533053401]
 --
 
 -- master instance properties
@@ -14,13 +14,13 @@ INSERT INTO instance_properties (server_id, string_id, id, ident, value) VALUES
  (0, "", 0, "serverinstance_serverquery_flood_commands", "10"),
  (0, "", 0, "serverinstance_serverquery_flood_time", "3"),
  (0, "", 0, "serverinstance_serverquery_ban_time", "600"),
- (0, "", 0, "serverinstance_pending_connections_per_ip", "0"),
+ (0, "", 0, "serverinstance_pending_connections_per_ip", "10"),
  (0, "", 0, "serverinstance_guest_serverquery_group", "2"),
  (0, "", 0, "serverinstance_template_serveradmin_group", "3"),
  (0, "", 0, "serverinstance_template_serverdefault_group", "5"),
  (0, "", 0, "serverinstance_template_channeladmin_group", "1"),
  (0, "", 0, "serverinstance_guest_serverquery_group", "4"),
- (0, "", 0, "serverinstance_permissions_version", "20");
+ (0, "", 0, "serverinstance_permissions_version", "21");
 
 -- virtual server template properties
 INSERT INTO server_properties (server_id, id, ident, value) VALUES
@@ -35,9 +35,9 @@ INSERT INTO server_properties (server_id, id, ident, value) VALUES
  (0, 0, "virtualserver_hostbanner_gfx_url", ""),
  (0, 0, "virtualserver_hostbanner_gfx_interval", "0"),
  (0, 0, "virtualserver_hostbanner_mode", "0"),
- (0, 0, "virtualserver_hostbutton_url", ""),
- (0, 0, "virtualserver_hostbutton_gfx_url", ""),
- (0, 0, "virtualserver_hostbutton_tooltip", ""),
+ (0, 0, "virtualserver_hostbutton_url", "https://www.planetteamspeak.com"),
+ (0, 0, "virtualserver_hostbutton_gfx_url", "https://cdn.planetteamspeak.com/images/logos/logo_small.png"),
+ (0, 0, "virtualserver_hostbutton_tooltip", "Planet TeamSpeak"),
  (0, 0, "virtualserver_complain_autoban_count", "5"),
  (0, 0, "virtualserver_complain_autoban_time", "1200"),
  (0, 0, "virtualserver_complain_remove_time", "3600"),
@@ -167,6 +167,7 @@ INSERT INTO perm_server_group (server_id, id1, id2, perm_id, perm_value, perm_ne
  (0, 1, 0, "b_virtualserver_modify_temporary_passwords_own", 1, 0, 0),
  (0, 1, 0, "b_virtualserver_modify_channel_temp_delete_delay_default", 1, 0, 0),
  (0, 1, 0, "b_virtualserver_modify_nickname", 1, 0, 0),
+ (0, 1, 0, "b_virtualserver_modify_integrations", 1, 0, 0),
  (0, 1, 0, "i_channel_max_depth", -1, 0, 0),
  (0, 1, 0, "i_channel_permission_modify_power", 100, 0, 0),
  (0, 1, 0, "b_channel_info_view", 1, 0, 0),
@@ -390,6 +391,7 @@ INSERT INTO perm_server_group (server_id, id1, id2, perm_id, perm_value, perm_ne
  (0, 1, 0, "i_needed_modify_power_virtualserver_modify_temporary_passwords_own", 100, 0, 0),
  (0, 1, 0, "i_needed_modify_power_virtualserver_modify_channel_temp_delete_delay_default", 100, 0, 0),
  (0, 1, 0, "i_needed_modify_power_virtualserver_modify_nickname", 100, 0, 0),
+ (0, 1, 0, "i_needed_modify_power_virtualserver_modify_integrations", 100, 0, 0),
  (0, 1, 0, "i_needed_modify_power_channel_min_depth", 100, 0, 0),
  (0, 1, 0, "i_needed_modify_power_channel_max_depth", 100, 0, 0),
  (0, 1, 0, "i_needed_modify_power_channel_group_inheritance_end", 100, 0, 0),
@@ -635,6 +637,7 @@ INSERT INTO perm_server_group (server_id, id1, id2, perm_id, perm_value, perm_ne
  (0, 3, 0, "b_virtualserver_modify_temporary_passwords_own", 1, 0, 0),
  (0, 3, 0, "b_virtualserver_modify_channel_temp_delete_delay_default", 1, 0, 0),
  (0, 3, 0, "b_virtualserver_modify_nickname", 1, 0, 0),
+ (0, 3, 0, "b_virtualserver_modify_integrations", 1, 0, 0),
  (0, 3, 0, "i_channel_max_depth", 10, 0, 0),
  (0, 3, 0, "i_channel_permission_modify_power", 75, 0, 0),
  (0, 3, 0, "b_channel_info_view", 1, 0, 0),
@@ -818,6 +821,7 @@ INSERT INTO perm_server_group (server_id, id1, id2, perm_id, perm_value, perm_ne
  (0, 3, 0, "i_needed_modify_power_virtualserver_modify_temporary_passwords_own", 75, 0, 0),
  (0, 3, 0, "i_needed_modify_power_virtualserver_modify_channel_temp_delete_delay_default", 75, 0, 0),
  (0, 3, 0, "i_needed_modify_power_virtualserver_modify_nickname", 75, 0, 0),
+ (0, 3, 0, "i_needed_modify_power_virtualserver_modify_integrations", 75, 0, 0),
  (0, 3, 0, "i_needed_modify_power_channel_min_depth", 75, 0, 0),
  (0, 3, 0, "i_needed_modify_power_channel_max_depth", 75, 0, 0),
  (0, 3, 0, "i_needed_modify_power_channel_group_inheritance_end", 75, 0, 0),
@@ -1182,4 +1186,3 @@ INSERT INTO perm_channel_groups (server_id, id1, id2, perm_id, perm_value, perm_
 INSERT INTO perm_channel_groups (server_id, id1, id2, perm_id, perm_value, perm_negated, perm_skip) VALUES
  (0, 4, 0, "i_group_auto_update_type", 10, 0, 0),
  (0, 4, 0, "i_group_needed_modify_power", 75, 0, 0);
-
