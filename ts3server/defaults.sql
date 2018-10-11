@@ -2,8 +2,8 @@
 -- DEFAULT PERMISSIONS AND VIRTUAL SERVER SETTINGS
 --
 -- Host Identifier: teamspeak01
--- Creation Time:   Fri, 10 Aug 2018 13:04:45 +0200
--- Server Version:  3.3.0 [Build: 1533053401]
+-- Creation Time:   Thu, 11 Oct 2018 10:31:04 +0200
+-- Server Version:  3.5.0 [Build: 1539181905]
 --
 
 -- master instance properties
@@ -92,7 +92,6 @@ INSERT INTO group_server_to_client (group_id, server_id, id1, id2) VALUES
 -- server group permissions for 'ServerQuery Admins' (id:1)
 INSERT INTO perm_server_group (server_id, id1, id2, perm_id, perm_value, perm_negated, perm_skip) VALUES
  (0, 1, 0, "b_serverinstance_help_view", 1, 0, 0),
- (0, 1, 0, "b_serverinstance_version_view", 1, 0, 0),
  (0, 1, 0, "b_serverinstance_info_view", 1, 0, 0),
  (0, 1, 0, "b_serverinstance_virtualserver_list", 1, 0, 0),
  (0, 1, 0, "b_serverinstance_binding_list", 1, 0, 0),
@@ -175,7 +174,6 @@ INSERT INTO perm_server_group (server_id, id1, id2, perm_id, perm_value, perm_ne
  (0, 1, 0, "b_channel_create_permanent", 1, 0, 0),
  (0, 1, 0, "b_channel_create_semi_permanent", 1, 0, 0),
  (0, 1, 0, "b_channel_create_temporary", 1, 0, 0),
- (0, 1, 0, "b_channel_create_private", 1, 0, 0),
  (0, 1, 0, "b_channel_create_with_topic", 1, 0, 0),
  (0, 1, 0, "b_channel_create_with_description", 1, 0, 0),
  (0, 1, 0, "b_channel_create_with_password", 1, 0, 0),
@@ -316,7 +314,6 @@ INSERT INTO perm_server_group (server_id, id1, id2, perm_id, perm_value, perm_ne
  (0, 1, 0, "i_ft_quota_mb_download_per_client", -1, 0, 0),
  (0, 1, 0, "i_ft_quota_mb_upload_per_client", -1, 0, 0),
  (0, 1, 0, "i_needed_modify_power_serverinstance_help_view", 100, 0, 0),
- (0, 1, 0, "i_needed_modify_power_serverinstance_version_view", 100, 0, 0),
  (0, 1, 0, "i_needed_modify_power_serverinstance_info_view", 100, 0, 0),
  (0, 1, 0, "i_needed_modify_power_serverinstance_virtualserver_list", 100, 0, 0),
  (0, 1, 0, "i_needed_modify_power_serverinstance_binding_list", 100, 0, 0),
@@ -402,7 +399,6 @@ INSERT INTO perm_server_group (server_id, id1, id2, perm_id, perm_value, perm_ne
  (0, 1, 0, "i_needed_modify_power_channel_create_permanent", 100, 0, 0),
  (0, 1, 0, "i_needed_modify_power_channel_create_semi_permanent", 100, 0, 0),
  (0, 1, 0, "i_needed_modify_power_channel_create_temporary", 100, 0, 0),
- (0, 1, 0, "i_needed_modify_power_channel_create_private", 100, 0, 0),
  (0, 1, 0, "i_needed_modify_power_channel_create_with_topic", 100, 0, 0),
  (0, 1, 0, "i_needed_modify_power_channel_create_with_description", 100, 0, 0),
  (0, 1, 0, "i_needed_modify_power_channel_create_with_password", 100, 0, 0),
@@ -567,7 +563,6 @@ INSERT INTO perm_server_group (server_id, id1, id2, perm_id, perm_value, perm_ne
 -- server group permissions for 'ServerQuery Guests' (id:2)
 INSERT INTO perm_server_group (server_id, id1, id2, perm_id, perm_value, perm_negated, perm_skip) VALUES
  (0, 2, 0, "b_serverinstance_help_view", 1, 0, 0),
- (0, 2, 0, "b_serverinstance_version_view", 1, 0, 0),
  (0, 2, 0, "b_serverinstance_permission_list", 1, 0, 0),
  (0, 2, 0, "b_serverquery_login", 1, 0, 0),
  (0, 2, 0, "b_virtualserver_select", 1, 0, 0),
@@ -575,7 +570,6 @@ INSERT INTO perm_server_group (server_id, id1, id2, perm_id, perm_value, perm_ne
  (0, 2, 0, "b_channel_create_permanent", 0, 1, 1),
  (0, 2, 0, "b_channel_create_semi_permanent", 0, 1, 1),
  (0, 2, 0, "b_channel_create_temporary", 0, 1, 1),
- (0, 2, 0, "b_channel_create_private", 0, 1, 1),
  (0, 2, 0, "b_channel_join_permanent", 0, 1, 1),
  (0, 2, 0, "b_channel_join_semi_permanent", 0, 1, 1),
  (0, 2, 0, "b_channel_join_temporary", 0, 1, 1),
@@ -645,7 +639,6 @@ INSERT INTO perm_server_group (server_id, id1, id2, perm_id, perm_value, perm_ne
  (0, 3, 0, "b_channel_create_permanent", 1, 0, 0),
  (0, 3, 0, "b_channel_create_semi_permanent", 1, 0, 0),
  (0, 3, 0, "b_channel_create_temporary", 1, 0, 0),
- (0, 3, 0, "b_channel_create_private", 1, 0, 0),
  (0, 3, 0, "b_channel_create_with_topic", 1, 0, 0),
  (0, 3, 0, "b_channel_create_with_description", 1, 0, 0),
  (0, 3, 0, "b_channel_create_with_password", 1, 0, 0),
@@ -832,7 +825,6 @@ INSERT INTO perm_server_group (server_id, id1, id2, perm_id, perm_value, perm_ne
  (0, 3, 0, "i_needed_modify_power_channel_create_permanent", 75, 0, 0),
  (0, 3, 0, "i_needed_modify_power_channel_create_semi_permanent", 75, 0, 0),
  (0, 3, 0, "i_needed_modify_power_channel_create_temporary", 75, 0, 0),
- (0, 3, 0, "i_needed_modify_power_channel_create_private", 75, 0, 0),
  (0, 3, 0, "i_needed_modify_power_channel_create_with_topic", 75, 0, 0),
  (0, 3, 0, "i_needed_modify_power_channel_create_with_description", 75, 0, 0),
  (0, 3, 0, "i_needed_modify_power_channel_create_with_password", 75, 0, 0),
@@ -1004,7 +996,6 @@ INSERT INTO perm_server_group (server_id, id1, id2, perm_id, perm_value, perm_ne
  (0, 4, 0, "b_channel_create_child", 1, 0, 0),
  (0, 4, 0, "b_channel_create_semi_permanent", 1, 0, 0),
  (0, 4, 0, "b_channel_create_temporary", 1, 0, 0),
- (0, 4, 0, "b_channel_create_private", 1, 0, 0),
  (0, 4, 0, "b_channel_create_with_topic", 1, 0, 0),
  (0, 4, 0, "b_channel_create_with_description", 1, 0, 0),
  (0, 4, 0, "b_channel_create_with_password", 1, 0, 0),
