@@ -2,8 +2,8 @@
 -- DEFAULT PERMISSIONS AND VIRTUAL SERVER SETTINGS
 --
 -- Host Identifier: teamspeak01
--- Creation Time:   Thu, 11 Oct 2018 10:31:04 +0200
--- Server Version:  3.5.0 [Build: 1539181905]
+-- Creation Time:   Wed, 08 May 2019 12:39:08 +0200
+-- Server Version:  3.8.0-alpha6 [Build: 1555071010]
 --
 
 -- master instance properties
@@ -20,7 +20,7 @@ INSERT INTO instance_properties (server_id, string_id, id, ident, value) VALUES
  (0, "", 0, "serverinstance_template_serverdefault_group", "5"),
  (0, "", 0, "serverinstance_template_channeladmin_group", "1"),
  (0, "", 0, "serverinstance_guest_serverquery_group", "4"),
- (0, "", 0, "serverinstance_permissions_version", "21");
+ (0, "", 0, "serverinstance_permissions_version", "23");
 
 -- virtual server template properties
 INSERT INTO server_properties (server_id, id, ident, value) VALUES
@@ -104,6 +104,9 @@ INSERT INTO perm_server_group (server_id, id1, id2, perm_id, perm_value, perm_ne
  (0, 1, 0, "b_virtualserver_change_machine_id", 1, 0, 0),
  (0, 1, 0, "b_virtualserver_change_template", 1, 0, 0),
  (0, 1, 0, "b_serverquery_login", 1, 0, 0),
+ (0, 1, 0, "b_serverquery_login_create", 1, 0, 0),
+ (0, 1, 0, "b_serverquery_login_delete", 1, 0, 0),
+ (0, 1, 0, "b_serverquery_login_list", 1, 0, 0),
  (0, 1, 0, "b_serverinstance_textmessage_send", 1, 0, 0),
  (0, 1, 0, "b_serverinstance_log_view", 1, 0, 0),
  (0, 1, 0, "b_serverinstance_log_add", 1, 0, 0),
@@ -177,10 +180,7 @@ INSERT INTO perm_server_group (server_id, id1, id2, perm_id, perm_value, perm_ne
  (0, 1, 0, "b_channel_create_with_topic", 1, 0, 0),
  (0, 1, 0, "b_channel_create_with_description", 1, 0, 0),
  (0, 1, 0, "b_channel_create_with_password", 1, 0, 0),
- (0, 1, 0, "b_channel_create_modify_with_codec_speex8", 1, 0, 0),
- (0, 1, 0, "b_channel_create_modify_with_codec_speex16", 1, 0, 0),
- (0, 1, 0, "b_channel_create_modify_with_codec_speex32", 1, 0, 0),
- (0, 1, 0, "b_channel_create_modify_with_codec_celtmono48", 1, 0, 0),
+ (0, 1, 0, "b_channel_create_with_banner", 1, 0, 0),
  (0, 1, 0, "b_channel_create_modify_with_codec_opusvoice", 1, 0, 0),
  (0, 1, 0, "b_channel_create_modify_with_codec_opusmusic", 1, 0, 0),
  (0, 1, 0, "i_channel_create_modify_with_codec_maxquality", 10, 0, 0),
@@ -200,6 +200,7 @@ INSERT INTO perm_server_group (server_id, id1, id2, perm_id, perm_value, perm_ne
  (0, 1, 0, "b_channel_modify_topic", 1, 0, 0),
  (0, 1, 0, "b_channel_modify_description", 1, 0, 0),
  (0, 1, 0, "b_channel_modify_password", 1, 0, 0),
+ (0, 1, 0, "b_channel_modify_banner", 1, 0, 0),
  (0, 1, 0, "b_channel_modify_codec", 1, 0, 0),
  (0, 1, 0, "b_channel_modify_codec_quality", 1, 0, 0),
  (0, 1, 0, "b_channel_modify_codec_latency_factor", 1, 0, 0),
@@ -258,7 +259,6 @@ INSERT INTO perm_server_group (server_id, id1, id2, perm_id, perm_value, perm_ne
  (0, 1, 0, "b_client_skip_channelgroup_permissions", 1, 0, 0),
  (0, 1, 0, "b_client_ignore_bans", 1, 0, 0),
  (0, 1, 0, "b_client_ignore_antiflood", 1, 0, 0),
- (0, 1, 0, "b_client_issue_client_query_command", 1, 0, 0),
  (0, 1, 0, "b_client_use_reserved_slot", 1, 0, 0),
  (0, 1, 0, "b_client_use_channel_commander", 1, 0, 0),
  (0, 1, 0, "b_client_request_talker", 1, 0, 0),
@@ -298,6 +298,7 @@ INSERT INTO perm_server_group (server_id, id1, id2, perm_id, perm_value, perm_ne
  (0, 1, 0, "i_client_poke_power", 100, 0, 0),
  (0, 1, 0, "i_client_needed_poke_power", 100, 0, 0),
  (0, 1, 0, "b_client_set_flag_talker", 1, 0, 0),
+ (0, 1, 0, "i_client_needed_whisper_power", 100, 0, 0),
  (0, 1, 0, "b_client_modify_description", 1, 0, 0),
  (0, 1, 0, "b_client_modify_own_description", 1, 0, 0),
  (0, 1, 0, "b_client_modify_dbproperties", 1, 0, 0),
@@ -326,6 +327,9 @@ INSERT INTO perm_server_group (server_id, id1, id2, perm_id, perm_value, perm_ne
  (0, 1, 0, "i_needed_modify_power_virtualserver_change_machine_id", 100, 0, 0),
  (0, 1, 0, "i_needed_modify_power_virtualserver_change_template", 100, 0, 0),
  (0, 1, 0, "i_needed_modify_power_serverquery_login", 100, 0, 0),
+ (0, 1, 0, "i_needed_modify_power_serverquery_login_create", 100, 0, 0),
+ (0, 1, 0, "i_needed_modify_power_serverquery_login_delete", 100, 0, 0),
+ (0, 1, 0, "i_needed_modify_power_serverquery_login_list", 100, 0, 0),
  (0, 1, 0, "i_needed_modify_power_serverinstance_textmessage_send", 100, 0, 0),
  (0, 1, 0, "i_needed_modify_power_serverinstance_log_view", 100, 0, 0),
  (0, 1, 0, "i_needed_modify_power_serverinstance_log_add", 100, 0, 0),
@@ -402,10 +406,7 @@ INSERT INTO perm_server_group (server_id, id1, id2, perm_id, perm_value, perm_ne
  (0, 1, 0, "i_needed_modify_power_channel_create_with_topic", 100, 0, 0),
  (0, 1, 0, "i_needed_modify_power_channel_create_with_description", 100, 0, 0),
  (0, 1, 0, "i_needed_modify_power_channel_create_with_password", 100, 0, 0),
- (0, 1, 0, "i_needed_modify_power_channel_create_modify_with_codec_speex8", 100, 0, 0),
- (0, 1, 0, "i_needed_modify_power_channel_create_modify_with_codec_speex16", 100, 0, 0),
- (0, 1, 0, "i_needed_modify_power_channel_create_modify_with_codec_speex32", 100, 0, 0),
- (0, 1, 0, "i_needed_modify_power_channel_create_modify_with_codec_celtmono48", 100, 0, 0),
+ (0, 1, 0, "i_needed_modify_power_channel_create_with_banner", 100, 0, 0),
  (0, 1, 0, "i_needed_modify_power_channel_create_modify_with_codec_opusvoice", 100, 0, 0),
  (0, 1, 0, "i_needed_modify_power_channel_create_modify_with_codec_opusmusic", 100, 0, 0),
  (0, 1, 0, "i_needed_modify_power_channel_create_modify_with_codec_maxquality", 100, 0, 0),
@@ -426,6 +427,7 @@ INSERT INTO perm_server_group (server_id, id1, id2, perm_id, perm_value, perm_ne
  (0, 1, 0, "i_needed_modify_power_channel_modify_topic", 100, 0, 0),
  (0, 1, 0, "i_needed_modify_power_channel_modify_description", 100, 0, 0),
  (0, 1, 0, "i_needed_modify_power_channel_modify_password", 100, 0, 0),
+ (0, 1, 0, "i_needed_modify_power_channel_modify_banner", 100, 0, 0),
  (0, 1, 0, "i_needed_modify_power_channel_modify_codec", 100, 0, 0),
  (0, 1, 0, "i_needed_modify_power_channel_modify_codec_quality", 100, 0, 0),
  (0, 1, 0, "i_needed_modify_power_channel_modify_codec_latency_factor", 100, 0, 0),
@@ -494,7 +496,6 @@ INSERT INTO perm_server_group (server_id, id1, id2, perm_id, perm_value, perm_ne
  (0, 1, 0, "i_needed_modify_power_client_force_push_to_talk", 100, 0, 0),
  (0, 1, 0, "i_needed_modify_power_client_ignore_bans", 100, 0, 0),
  (0, 1, 0, "i_needed_modify_power_client_ignore_antiflood", 100, 0, 0),
- (0, 1, 0, "i_needed_modify_power_client_issue_client_query_command", 100, 0, 0),
  (0, 1, 0, "i_needed_modify_power_client_use_reserved_slot", 100, 0, 0),
  (0, 1, 0, "i_needed_modify_power_client_use_channel_commander", 100, 0, 0),
  (0, 1, 0, "i_needed_modify_power_client_request_talker", 100, 0, 0),
@@ -589,7 +590,8 @@ INSERT INTO perm_server_group (server_id, id1, id2, perm_id, perm_value, perm_ne
  (0, 2, 0, "b_client_offline_textmessage_send", 0, 1, 1),
  (0, 2, 0, "i_client_talk_power", -1, 1, 1),
  (0, 2, 0, "i_client_poke_power", -1, 1, 1),
- (0, 2, 0, "i_client_whisper_power", -1, 1, 1);
+ (0, 2, 0, "i_client_whisper_power", -1, 1, 1),
+ (0, 2, 0, "i_client_needed_whisper_power", 100, 0, 0);
 
 -- server group permissions for 'Server Admins' (id:3)
 INSERT INTO perm_server_group (server_id, id1, id2, perm_id, perm_value, perm_negated, perm_skip) VALUES
@@ -642,10 +644,7 @@ INSERT INTO perm_server_group (server_id, id1, id2, perm_id, perm_value, perm_ne
  (0, 3, 0, "b_channel_create_with_topic", 1, 0, 0),
  (0, 3, 0, "b_channel_create_with_description", 1, 0, 0),
  (0, 3, 0, "b_channel_create_with_password", 1, 0, 0),
- (0, 3, 0, "b_channel_create_modify_with_codec_speex8", 1, 0, 0),
- (0, 3, 0, "b_channel_create_modify_with_codec_speex16", 1, 0, 0),
- (0, 3, 0, "b_channel_create_modify_with_codec_speex32", 1, 0, 0),
- (0, 3, 0, "b_channel_create_modify_with_codec_celtmono48", 1, 0, 0),
+ (0, 3, 0, "b_channel_create_with_banner", 1, 0, 0),
  (0, 3, 0, "b_channel_create_modify_with_codec_opusvoice", 1, 0, 0),
  (0, 3, 0, "b_channel_create_modify_with_codec_opusmusic", 1, 0, 0),
  (0, 3, 0, "i_channel_create_modify_with_codec_maxquality", 10, 0, 0),
@@ -665,6 +664,7 @@ INSERT INTO perm_server_group (server_id, id1, id2, perm_id, perm_value, perm_ne
  (0, 3, 0, "b_channel_modify_topic", 1, 0, 0),
  (0, 3, 0, "b_channel_modify_description", 1, 0, 0),
  (0, 3, 0, "b_channel_modify_password", 1, 0, 0),
+ (0, 3, 0, "b_channel_modify_banner", 1, 0, 0),
  (0, 3, 0, "b_channel_modify_codec", 1, 0, 0),
  (0, 3, 0, "b_channel_modify_codec_quality", 1, 0, 0),
  (0, 3, 0, "b_channel_modify_codec_latency_factor", 1, 0, 0),
@@ -722,7 +722,6 @@ INSERT INTO perm_server_group (server_id, id1, id2, perm_id, perm_value, perm_ne
  (0, 3, 0, "b_client_skip_channelgroup_permissions", 1, 0, 0),
  (0, 3, 0, "b_client_ignore_bans", 1, 0, 0),
  (0, 3, 0, "b_client_ignore_antiflood", 1, 0, 0),
- (0, 3, 0, "b_client_issue_client_query_command", 1, 0, 0),
  (0, 3, 0, "b_client_use_reserved_slot", 1, 0, 0),
  (0, 3, 0, "b_client_use_channel_commander", 1, 0, 0),
  (0, 3, 0, "b_client_request_talker", 1, 0, 0),
@@ -828,10 +827,7 @@ INSERT INTO perm_server_group (server_id, id1, id2, perm_id, perm_value, perm_ne
  (0, 3, 0, "i_needed_modify_power_channel_create_with_topic", 75, 0, 0),
  (0, 3, 0, "i_needed_modify_power_channel_create_with_description", 75, 0, 0),
  (0, 3, 0, "i_needed_modify_power_channel_create_with_password", 75, 0, 0),
- (0, 3, 0, "i_needed_modify_power_channel_create_modify_with_codec_speex8", 75, 0, 0),
- (0, 3, 0, "i_needed_modify_power_channel_create_modify_with_codec_speex16", 75, 0, 0),
- (0, 3, 0, "i_needed_modify_power_channel_create_modify_with_codec_speex32", 75, 0, 0),
- (0, 3, 0, "i_needed_modify_power_channel_create_modify_with_codec_celtmono48", 75, 0, 0),
+ (0, 3, 0, "i_needed_modify_power_channel_create_with_banner", 75, 0, 0),
  (0, 3, 0, "i_needed_modify_power_channel_create_modify_with_codec_opusvoice", 75, 0, 0),
  (0, 3, 0, "i_needed_modify_power_channel_create_modify_with_codec_opusmusic", 75, 0, 0),
  (0, 3, 0, "i_needed_modify_power_channel_create_modify_with_codec_maxquality", 75, 0, 0),
@@ -852,6 +848,7 @@ INSERT INTO perm_server_group (server_id, id1, id2, perm_id, perm_value, perm_ne
  (0, 3, 0, "i_needed_modify_power_channel_modify_topic", 75, 0, 0),
  (0, 3, 0, "i_needed_modify_power_channel_modify_description", 75, 0, 0),
  (0, 3, 0, "i_needed_modify_power_channel_modify_password", 75, 0, 0),
+ (0, 3, 0, "i_needed_modify_power_channel_modify_banner", 75, 0, 0),
  (0, 3, 0, "i_needed_modify_power_channel_modify_codec", 75, 0, 0),
  (0, 3, 0, "i_needed_modify_power_channel_modify_codec_quality", 75, 0, 0),
  (0, 3, 0, "i_needed_modify_power_channel_modify_codec_latency_factor", 75, 0, 0),
@@ -918,7 +915,6 @@ INSERT INTO perm_server_group (server_id, id1, id2, perm_id, perm_value, perm_ne
  (0, 3, 0, "i_needed_modify_power_client_force_push_to_talk", 75, 0, 0),
  (0, 3, 0, "i_needed_modify_power_client_ignore_bans", 75, 0, 0),
  (0, 3, 0, "i_needed_modify_power_client_ignore_antiflood", 75, 0, 0),
- (0, 3, 0, "i_needed_modify_power_client_issue_client_query_command", 75, 0, 0),
  (0, 3, 0, "i_needed_modify_power_client_use_reserved_slot", 75, 0, 0),
  (0, 3, 0, "i_needed_modify_power_client_use_channel_commander", 75, 0, 0),
  (0, 3, 0, "i_needed_modify_power_client_request_talker", 75, 0, 0),
@@ -999,9 +995,6 @@ INSERT INTO perm_server_group (server_id, id1, id2, perm_id, perm_value, perm_ne
  (0, 4, 0, "b_channel_create_with_topic", 1, 0, 0),
  (0, 4, 0, "b_channel_create_with_description", 1, 0, 0),
  (0, 4, 0, "b_channel_create_with_password", 1, 0, 0),
- (0, 4, 0, "b_channel_create_modify_with_codec_speex8", 1, 0, 0),
- (0, 4, 0, "b_channel_create_modify_with_codec_speex16", 1, 0, 0),
- (0, 4, 0, "b_channel_create_modify_with_codec_speex32", 1, 0, 0),
  (0, 4, 0, "b_channel_create_modify_with_codec_opusvoice", 1, 0, 0),
  (0, 4, 0, "b_channel_create_modify_with_codec_opusmusic", 1, 0, 0),
  (0, 4, 0, "i_channel_create_modify_with_codec_maxquality", 7, 0, 0),
@@ -1076,9 +1069,6 @@ INSERT INTO perm_server_group (server_id, id1, id2, perm_id, perm_value, perm_ne
  (0, 5, 0, "b_channel_create_temporary", 1, 0, 0),
  (0, 5, 0, "b_channel_create_with_topic", 1, 0, 0),
  (0, 5, 0, "b_channel_create_with_password", 1, 0, 0),
- (0, 5, 0, "b_channel_create_modify_with_codec_speex8", 1, 0, 0),
- (0, 5, 0, "b_channel_create_modify_with_codec_speex16", 1, 0, 0),
- (0, 5, 0, "b_channel_create_modify_with_codec_speex32", 1, 0, 0),
  (0, 5, 0, "b_channel_create_modify_with_codec_opusvoice", 1, 0, 0),
  (0, 5, 0, "b_channel_create_modify_with_codec_opusmusic", 1, 0, 0),
  (0, 5, 0, "i_channel_create_modify_with_codec_maxquality", 7, 0, 0),
