@@ -2,8 +2,8 @@
 -- DEFAULT PERMISSIONS AND VIRTUAL SERVER SETTINGS
 --
 -- Host Identifier: teamspeak01
--- Creation Time:   Wed, 08 May 2019 12:39:08 +0200
--- Server Version:  3.8.0-alpha6 [Build: 1555071010]
+-- Creation Time:   Sat, 02 Nov 2019 10:45:46 +0100
+-- Server Version:  3.10.0-beta3 [Build: 1572517838]
 --
 
 -- master instance properties
@@ -19,7 +19,7 @@ INSERT INTO instance_properties (server_id, string_id, id, ident, value) VALUES
  (0, "", 0, "serverinstance_template_serveradmin_group", "3"),
  (0, "", 0, "serverinstance_template_serverdefault_group", "5"),
  (0, "", 0, "serverinstance_template_channeladmin_group", "1"),
- (0, "", 0, "serverinstance_guest_serverquery_group", "4"),
+ (0, "", 0, "serverinstance_template_channeldefault_group", "4"),
  (0, "", 0, "serverinstance_permissions_version", "23");
 
 -- virtual server template properties
