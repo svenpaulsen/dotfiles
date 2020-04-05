@@ -2,8 +2,8 @@
 -- DEFAULT PERMISSIONS AND VIRTUAL SERVER SETTINGS
 --
 -- Host Identifier: teamspeak01
--- Creation Time:   Sat, 02 Nov 2019 10:45:46 +0100
--- Server Version:  3.10.0-beta3 [Build: 1572517838]
+-- Creation Time:   Sun, 05 Apr 2020 21:30:43 +0200
+-- Server Version:  3.12.0 [Build: 1584532397]
 --
 
 -- master instance properties
@@ -20,7 +20,7 @@ INSERT INTO instance_properties (server_id, string_id, id, ident, value) VALUES
  (0, "", 0, "serverinstance_template_serverdefault_group", "5"),
  (0, "", 0, "serverinstance_template_channeladmin_group", "1"),
  (0, "", 0, "serverinstance_template_channeldefault_group", "4"),
- (0, "", 0, "serverinstance_permissions_version", "23");
+ (0, "", 0, "serverinstance_permissions_version", "24");
 
 -- virtual server template properties
 INSERT INTO server_properties (server_id, id, ident, value) VALUES
@@ -132,6 +132,8 @@ INSERT INTO perm_server_group (server_id, id1, id2, perm_id, perm_value, perm_ne
  (0, 1, 0, "b_virtualserver_token_add", 1, 0, 0),
  (0, 1, 0, "b_virtualserver_token_use", 1, 0, 0),
  (0, 1, 0, "b_virtualserver_token_delete", 1, 0, 0),
+ (0, 1, 0, "b_virtualserver_apikey_add", 1, 0, 0),
+ (0, 1, 0, "b_virtualserver_apikey_manage", 1, 0, 0),
  (0, 1, 0, "b_virtualserver_log_view", 1, 0, 0),
  (0, 1, 0, "b_virtualserver_log_add", 1, 0, 0),
  (0, 1, 0, "b_virtualserver_join_ignore_password", 1, 0, 0),
@@ -355,6 +357,8 @@ INSERT INTO perm_server_group (server_id, id1, id2, perm_id, perm_value, perm_ne
  (0, 1, 0, "i_needed_modify_power_virtualserver_token_add", 100, 0, 0),
  (0, 1, 0, "i_needed_modify_power_virtualserver_token_use", 100, 0, 0),
  (0, 1, 0, "i_needed_modify_power_virtualserver_token_delete", 100, 0, 0),
+ (0, 1, 0, "i_needed_modify_power_virtualserver_apikey_add", 100, 0, 0),
+ (0, 1, 0, "i_needed_modify_power_virtualserver_apikey_manage", 100, 0, 0),
  (0, 1, 0, "i_needed_modify_power_virtualserver_log_view", 100, 0, 0),
  (0, 1, 0, "i_needed_modify_power_virtualserver_log_add", 100, 0, 0),
  (0, 1, 0, "i_needed_modify_power_virtualserver_join_ignore_password", 100, 0, 0),
@@ -610,6 +614,8 @@ INSERT INTO perm_server_group (server_id, id1, id2, perm_id, perm_value, perm_ne
  (0, 3, 0, "b_virtualserver_token_add", 1, 0, 0),
  (0, 3, 0, "b_virtualserver_token_use", 1, 0, 0),
  (0, 3, 0, "b_virtualserver_token_delete", 1, 0, 0),
+ (0, 3, 0, "b_virtualserver_apikey_add", 1, 0, 0),
+ (0, 3, 0, "b_virtualserver_apikey_manage", 1, 0, 0),
  (0, 3, 0, "b_virtualserver_log_view", 1, 0, 0),
  (0, 3, 0, "b_virtualserver_join_ignore_password", 1, 0, 0),
  (0, 3, 0, "b_virtualserver_notify_register", 1, 0, 0),
@@ -790,6 +796,8 @@ INSERT INTO perm_server_group (server_id, id1, id2, perm_id, perm_value, perm_ne
  (0, 3, 0, "i_needed_modify_power_virtualserver_token_add", 75, 0, 0),
  (0, 3, 0, "i_needed_modify_power_virtualserver_token_use", 75, 0, 0),
  (0, 3, 0, "i_needed_modify_power_virtualserver_token_delete", 75, 0, 0),
+ (0, 3, 0, "i_needed_modify_power_virtualserver_apikey_add", 75, 0, 0),
+ (0, 3, 0, "i_needed_modify_power_virtualserver_apikey_manage", 75, 0, 0),
  (0, 3, 0, "i_needed_modify_power_virtualserver_log_view", 75, 0, 0),
  (0, 3, 0, "i_needed_modify_power_virtualserver_join_ignore_password", 75, 0, 0),
  (0, 3, 0, "i_needed_modify_power_virtualserver_notify_register", 75, 0, 0),
