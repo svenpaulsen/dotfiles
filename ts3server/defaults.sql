@@ -2,8 +2,8 @@
 -- DEFAULT PERMISSIONS AND VIRTUAL SERVER SETTINGS
 --
 -- Host Identifier: teamspeak01
--- Creation Time:   Sun, 05 Apr 2020 21:30:43 +0200
--- Server Version:  3.12.0 [Build: 1584532397]
+-- Creation Time:   Tue, 18 Aug 2020 14:09:41 +0200
+-- Server Version:  3.12.1 [Build: 1585305527]
 --
 
 -- master instance properties
@@ -1175,3 +1175,4 @@ INSERT INTO perm_channel_groups (server_id, id1, id2, perm_id, perm_value, perm_
 INSERT INTO perm_channel_groups (server_id, id1, id2, perm_id, perm_value, perm_negated, perm_skip) VALUES
  (0, 4, 0, "i_group_auto_update_type", 10, 0, 0),
  (0, 4, 0, "i_group_needed_modify_power", 75, 0, 0);
+
