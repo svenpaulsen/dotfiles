@@ -1,5 +1,19 @@
 [user]
 	name = Sven Paulsen
 	email = info@sven-paulsen.de
+	
 [core]
-	fileMode = false
+        fileMode = false
+
+[filter "lfs"]
+        clean = git-lfs clean -- %f
+        smudge = git-lfs smudge -- %f
+        process = git-lfs filter-process
+        required = true
+
+[gpg]
+	format = ssh
+	program = /opt/homebrew/bin/gpg
+
+[commit]
+	gpgsign = true
